@@ -96,8 +96,12 @@
             </div>
               <div id="pagecontent" class="col" style="margin-left: 372px;">
                 <div class="container">
-                    <div style="background-color: blue; width: 100%; height: 200vh; margin-top: 87px;"></div>
-                </div>
+                  <div id="childDiv" style="position: relative; background-color: blue; width: 100%; height: 200vh; margin-top: 87px;">
+                    <div id="widthIndicator" style="position: absolute; top: 10px; right: 10px; padding: 10px; background-color: rgba(0, 0, 0, 0.8); color: white; border-radius: 5px;">
+                      Width: <span id="widthValue"></span>px
+                  </div>
+                  </div>
+              </div>
               </div>
         </div>
     </div>
@@ -119,6 +123,19 @@
           pagecontent.style.marginLeft = "72px";
         }
       });
+
+      function updateWidthIndicator() {
+        const childDiv = document.getElementById("childDiv");
+        const widthValue = childDiv.offsetWidth; // Get the width of the div in pixels
+        document.getElementById("widthValue").innerText = widthValue;
+      }
+
+      // Update width indicator on load
+      updateWidthIndicator();
+
+      // Update width indicator whenever the window is resized
+      window.addEventListener("resize", updateWidthIndicator);
+
     </script>
   </body>
 </html>
